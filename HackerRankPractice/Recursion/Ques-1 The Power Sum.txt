@@ -1,0 +1,26 @@
+    Ques-1 The Power Sum
+
+    public static  int fun(int X, int N, int number){
+
+        if((int)Math.pow(number, N) == X ) {
+            return 1;
+        }  
+
+        if((int)Math.pow(number, N) <= X ){
+            return fun(X, N, number+1) + fun(X- (int)Math.pow(number, N), N, number+1);
+        }
+        else{
+            return 0;
+        }
+
+
+
+
+    }
+
+    // Complete the powerSum function below.
+    static int powerSum(int X, int N) {
+
+        return fun(X, N, 1);
+
+    }
