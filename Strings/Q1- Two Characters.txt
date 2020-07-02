@@ -1,0 +1,61 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+// Complete the superReducedString function below.
+string superReducedString(string s) {
+
+    stack <char> st;
+    int i;
+
+    int len=s.length();
+
+    st.push(s[len-1]);
+    for(i=len-2;i>=0;i--){
+
+        if(st.empty()){
+            st.push(s[i]);
+        }
+        else{
+            char t=st.top();
+            if(t==s[i]){
+                st.pop();
+            }
+            else{
+                st.push(s[i]);
+            }
+        }
+}
+
+string str="";
+while(!st.empty()){
+    str= str +  st.top();
+    st.pop();
+}
+
+int x= str.length();
+
+if(x!=0){
+    return str;
+}
+
+else
+return "Empty String";
+
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string s;
+    getline(cin, s);
+
+    string result = superReducedString(s);
+
+    fout << result << "\n";
+
+    fout.close();
+
+    return 0;
+}

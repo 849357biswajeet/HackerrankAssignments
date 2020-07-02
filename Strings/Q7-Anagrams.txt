@@ -1,0 +1,102 @@
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+// Complete the anagram function below.
+int anagram(string s) {
+
+    int count=0,i;
+    int a[26]={0};
+    int b[26]={0};
+
+    int len=s.length();
+
+    assert(1<=len && len<=10000);
+if(len%2==0){
+    for(i=0;i<len/2;i++){
+        a[s[i]-'a']++;
+    }
+    for(i=len/2;i<len;i++){
+        b[s[i]-'a']++;
+    }
+
+    for(i=0;i<26;i++){
+        count += abs(a[i]-b[i]);
+    }
+
+    return count/2;
+}
+else{
+    return -1;
+}
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    int q;
+    cin >> q;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    for (int q_itr = 0; q_itr < q; q_itr++) {
+        string s;
+        getline(cin, s);
+
+        int result = anagram(s);
+
+        fout << result << "\n";
+    }
+
+    fout.close();
+
+    return 0;
+}
+/*
+#include <bits/stdc++.h>
+using namespace std;
+int mod (int x)
+{
+    if(x<0)
+        return (-1)*x;
+    else
+        return x;
+}
+int main()
+{
+    string str;
+    int T,x,i,sum;
+    cin>>T;
+    assert(1<=T && T<=100);
+    int count[26];
+    while(T--)
+    {
+        for(i=0 ;  i<26 ; i++)
+            count[i] = 0;
+        sum =0;
+        cin>>str;
+        x = str.length();
+        
+        assert(1<=x && x<=10000);
+        if(x%2==1)
+            cout<<"-1"<<endl;
+        else
+        {
+            for(i=0 ; i<x/2 ; i++)
+                count[str[i] - 'a']++;
+            for(i=x/2 ; i<x ; i++)
+                count[str[i] - 'a']--;
+            
+            for(i=0 ; i<26 ; i++)
+            {
+                sum = sum + mod(count[i]);
+            }
+            sum = sum/2;
+            cout<<sum<<endl;
+        }
+    }
+    return 0;
+}
+
+*/

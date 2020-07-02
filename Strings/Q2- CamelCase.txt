@@ -1,0 +1,37 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+// Complete the camelcase function below.
+int camelcase(string s) {
+
+    int len = s.length();
+
+    int wordss=0,i;
+
+    for(i=0;i<len;i++){
+        if(s[i]>=65 && s[i]<=90){
+            wordss++;
+        }
+    }
+
+
+    return wordss+1;
+
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string s;
+    getline(cin, s);
+
+    int result = camelcase(s);
+
+    fout << result << "\n";
+
+    fout.close();
+
+    return 0;
+}

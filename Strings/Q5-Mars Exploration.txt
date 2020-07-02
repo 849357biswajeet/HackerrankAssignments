@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+// Complete the marsExploration function below.
+int marsExploration(string s) {
+
+    int len=s.length();
+    int i,c=0;
+    string sos= "SOS";
+
+    for(i=0;i<len ;i=i+1){
+        if(s[i]!=sos[i%3]){
+            c++;
+        }
+    }
+return c;
+
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string s;
+    getline(cin, s);
+
+    int result = marsExploration(s);
+
+    fout << result << "\n";
+
+    fout.close();
+
+    return 0;
+}
